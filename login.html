@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login — LearnSphere</title>
+  <link href="style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">LearnSphere</div>
+    <div class="top-actions">
+      <a href="index.html" class="btn ghost">Home</a>
+      <button id="toggle-theme" class="btn ghost">Dark</button>
+    </div>
+  </header>
+
+  <main class="centered">
+    <div class="form-card login-card">
+      <div class="login-info-panel">
+        <div class="brand">LearnSphere</div>
+        <h2 class="gradient-text">Welcome Back</h2>
+        <p>Log in to access your personalized learning dashboard, track progress, and take adaptive quizzes.</p>
+        <i class="fas fa-rocket login-icon"></i>
+      </div>
+
+      <div class="login-form-panel">
+        <h3 id="form-title">Login to Your Account</h3>
+        <p class="small-muted" id="form-desc">Use demo credentials or create a new user.</p>
+
+        <form id="login-form">
+          <div class="mb">
+            <label>Role</label>
+            <select id="role" class="input">
+              <option value="">Select role</option>
+              <option value="student">Student</option>
+              <option value="teacher">Teacher</option>
+            </select>
+          </div>
+          <div class="mb">
+            <label>Username</label>
+            <input id="username" class="input" placeholder="student or teacher" />
+          </div>
+          <div class="mb">
+            <label>Password</label>
+            <input id="password" type="password" class="input" placeholder="1234" />
+          </div>
+          <div class="actions">
+            <button id="btn-login" class="btn primary large" type="submit">Login</button>
+            <button id="btn-register" class="btn primary large hidden" type="submit">Register</button>
+          </div>
+        </form>
+        <div class="mt text-center" style="display: flex; justify-content: center; gap: 1rem;">
+          <button id="btn-sample-student" class="btn-link">Use Student Demo</button>
+          <button id="btn-sample-teacher" class="btn-link">Use Teacher Demo</button>
+        </div>
+        <div class="mt text-center">
+          <span id="toggle-form-link" class="btn-link" style="cursor:pointer;">Don't have an account? Register</span>
+        </div>
+        <div class="mt text-center">
+          <button id="btn-health-check" class="btn ghost">Check Server Status</button>
+        </div>
+        <div id="login-msg" class="small-muted mt text-center"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Teacher Dashboard – LearnSphere</title>
+  <link href="style.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">LearnSphere</div>
+    <div class="top-actions">
+      <button id="btn-logout" class="btn ghost">Logout</button>
+      <button id="toggle-theme" class="btn ghost">Dark</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="row">
+      <div class="col-left card sidebar">
+        <h3 id="teacher-name"></h3>
+        <nav class="nav-vert">
+          <button class="nav-btn" data-t-screen="overview"><i class="fas fa-users"></i> Student Overview</button>
+          <button class="nav-btn" data-t-screen="final_test"><i class="fas fa-tasks"></i> Set Final Test</button>
+          <button class="nav-btn" data-t-screen="analytics"><i class="fas fa-chart-bar"></i> Analytics</button>
+          <button class="nav-btn" data-t-screen="assignments"><i class="fas fa-clipboard-list"></i> Assignments</button>
+          <button class="nav-btn" data-t-screen="gradebook"><i class="fas fa-book"></i> Gradebook</button>
+          <button class="nav-btn" data-t-screen="reports"><i class="fas fa-file-alt"></i> Reports</button>
+          <button class="nav-btn" data-t-screen="announcements"><i class="fas fa-bullhorn"></i> Announcements</button>
+        </nav>
+      </div>
+
+      <div class="col-main">
+        <div id="screen-overview" class="panel">
+          <h3><i class="fas fa-users"></i> Student Overview</h3>
+          <p class="small-muted">Monitor class statistics and individual student progress.</p>
+          <div id="class-stats" class="class-stats-grid mb"></div>
+          
+          <div class="overview-controls mb">
+            <input type="search" id="student-search-input" class="input" placeholder="Search for a student by name..." style="flex: 1;">
+            <select id="sort-select" class="input" style="width: 200px; margin-left: 0.5rem;">
+              <option value="name">Sort by Name</option>
+              <option value="score">Sort by Score</option>
+              <option value="progress">Sort by Progress</option>
+            </select>
+          </div>
+          
+          <div id="teacher-students" class="student-overview-grid"></div>
+        </div>
+
+        <div id="screen-final_test" class="panel hidden">
+          <h3><i class="fas fa-tasks"></i> Set Final Test Questions</h3>
+          <p class="small-muted">Select the questions you want to include in the end-of-module test for all students.</p>
+          <form id="set-final-test-form">
+              <div id="final-test-question-list" class="mb"></div>
+              <button class="btn primary" type="submit">Save Final Test</button>
+          </form>
+          <div id="final-test-msg" class="mt small-muted"></div>
+        </div>
+        
+        <div id="screen-analytics" class="panel hidden">
+          <h3><i class="fas fa-chart-bar"></i> Class Analytics</h3>
+          <p class="small-muted">Analyze student performance trends and identify areas needing attention.</p>
+          <div id="analytics-content"></div>
+        </div>
+
+        <div id="screen-assignments" class="panel hidden">
+          <h3><i class="fas fa-clipboard-list"></i> Assignments</h3>
+          <p class="small-muted">Assignment management UI would go here.</p>
+        </div>
+
+        <div id="screen-gradebook" class="panel hidden">
+          <h3><i class="fas fa-book"></i> Gradebook</h3>
+          <p class="small-muted">Gradebook UI would go here.</p>
+        </div>
+
+        <div id="screen-reports" class="panel hidden">
+          <h3><i class="fas fa-file-alt"></i> Reports</h3>
+          <p class="small-muted">Report generation UI would go here.</p>
+        </div>
+        
+        <div id="screen-announcements" class="panel hidden">
+          <h3><i class="fas fa-bullhorn"></i> Announcements</h3>
+          <p class="small-muted">Post updates and important information for your students.</p>
+          
+          <div class="panel mb" style="background: rgba(0,0,0,0.02);">
+              <form id="announcement-form">
+                  <h4>Create New Announcement</h4>
+                  <div class="mb">
+                      <label>Title</label>
+                      <input id="announcement-title" class="input" placeholder="e.g., Upcoming Test" required>
+                  </div>
+                   <div class="mb">
+                      <label>Content</label>
+                      <textarea id="announcement-content" class="input" rows="3" placeholder="Write your announcement here..." required></textarea>
+                  </div>
+                  <div class="mb">
+                      <label>Priority</label>
+                      <select id="announcement-priority" class="input">
+                        <option value="normal">Normal</option>
+                        <option value="high">High</option>
+                        <option value="critical">Critical</option>
+                      </select>
+                  </div>
+                  <button class="btn primary" type="submit">Post Announcement</button>
+              </form>
+          </div>
+          
+          <div id="announcements-list"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="offline-indicator" id="offline-indicator" style="display: none;">
+      <i class="fas fa-wifi"></i> You are currently offline
+  </div>
+
+  <script src="teacher.js"></script>
+</body>
+</html>
