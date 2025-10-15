@@ -4,7 +4,7 @@ Complete Flask application with AI integration
 """
 """
 LearnSphere Backend - AI-Powered Adaptive Learning Platform
-Complete Flask application with AI integration
+Complete Flask application with AI integration❌ Cannot reach backend server at http://localhost:5000. Make sure it is running!
 """
 
 from flask import Flask, request, jsonify, session, send_from_directory
@@ -1281,4 +1281,5 @@ if __name__ == '__main__':
         print("="*50 + "\n")
 
     # Listen on all interfaces for local dev, so http://localhost:8000 can reach it
+
     app.run(debug=True, host='0.0.0.0', port=5000)
